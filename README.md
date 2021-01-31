@@ -6,6 +6,8 @@ cd twitter
 
 composer install
 
+copy .env.example .env
+
 php artisan migrate
 
 php artisan serve
