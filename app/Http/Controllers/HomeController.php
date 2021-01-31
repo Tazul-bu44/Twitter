@@ -12,12 +12,10 @@ class HomeController extends Controller
         // let  user id 1 is Mr. X
         $x = DB::table('users')->select('id')->first();
         $followerOfMrX = DB::table('user_relation')->where('followed_id', $x->id)->select('follower_id')->get();
-//        dd($followerOfMrX);
 
         // SQL Query 02 "whom user X follows"
         // let user id 1 is  Mr. X
         $mrXFollows = DB::table('user_relation')->where('follower_id', $x->id)->select('followed_id')->get();
-//        dd($mrXFollows);
 
 
         // SQL Query 02 "who are friends of X"
@@ -30,6 +28,7 @@ class HomeController extends Controller
 
         $allPosts = DB::table('tweets')
             ->join('user_relation', 'user_relation.follower_id',  '=', 'tweets.user_id' )
+            ->where('tweets.id', '=', $x->id)
             ->select('tweets.content')->get();
         return view('welcome', compact('followerOfMrX', 'mrXFollows', 'friendOfMrX', 'allPosts'));
     }
