@@ -1,9 +1,9 @@
 # Twitter
 
 Quick Installation
-git clone https://github.com/laravel/quickstart-basic quickstart
+git clone git@github.com:Tazul-bu44/Twitter.git quickstart
 
-cd quickstart
+cd twitter
 
 composer install
 
